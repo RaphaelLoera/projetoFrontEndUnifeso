@@ -1,0 +1,342 @@
+/* Reset e configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Estilo do corpo da página */
+body {
+    background-color: #000;
+    color: #eee;
+    font-size: 12px;
+}
+
+/* Cabeçalho e navegação */
+header {
+    width: 1140px; /* Provavelmente faltou px aqui */
+    max-width: 80%;
+    margin: auto;
+    height: 50px; 
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 100;
+}
+/* Link do cabeçalho */
+header a {
+    color: #eee;
+    margin-right: 40px;
+    font-weight: 300;
+    
+    
+}
+/* Link do cabeçalho ao passar o mouse */
+nav {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    display: flex;
+
+}
+/* Links de navegação */
+nav a {
+          color: #eee;
+          text-decoration: none;
+          padding: 0px 50px 10px 0;
+          position: relative;
+
+          
+}
+/* Efeito de linha abaixo dos links */
+nav a::after {
+    content: " ";
+    width: 0%;
+    height: 2px;
+    background-color: #eee;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
+}
+/* Efeito de hover nos links de navegação */
+nav a:hover::after{
+          color: #eee;
+          width: 50%;
+          transition: 0.5s ease-in-out;
+}
+
+/* Container principal */
+.container {
+    height: 100vh;
+    width: 100vw;
+    margin-top: -50px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Itens da lista principal */
+.container .list .list-item {
+    inset: 0 0 0 0;
+    position: absolute;
+}
+
+/* Imagens dos itens da lista */
+.container .list .list-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: brightness(50%);
+}
+
+/* Conteúdo sobreposto nas imagens */
+.container .list .list-item .content {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    padding-right: 30%;
+    width: 80%;
+    color: #eee;
+    text-shadow: 0 5px 10px #0004;
+}
+
+/* Título dos itens */
+.container .list .list-item .title {
+    font-size: 5em;
+    font-weight: bold;
+    margin-bottom: 1.3em;
+}
+
+/* Descrição dos itens */
+.container .list .list-item .description {
+    font-size: 1.5em;
+}
+
+/* Botões dentro do conteúdo */
+.container .list .list-item .content .buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 40px;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Estilo dos botões */
+.container .list .list-item .content .buttons button {
+    border: none;
+    background-color: #eee;
+    letter-spacing: 3px;
+    cursor: pointer;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Primeiro botão com estilo diferenciado */
+.container .list .list-item .buttons button:nth-child(1) {
+    background-color: transparent;
+    background-color: #eee4;
+    border: none;
+    border-radius: 20px;
+}
+
+/* Efeito hover nos botões */
+.container .list .list-item .buttons button:hover {
+    background-color: #eee;
+    color: black;
+    border: 1px solid #eee;
+    transition: 0.7s;
+}
+
+/* Miniaturas (thumbs) */
+.container .thumb {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: max-content;
+    z-index: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+/* Cada thumb individual */
+.container .thumb .thumb-item {
+    width: 150px;
+    height: 220px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Imagem da thumb */
+.container .thumb .thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    filter: brightness(80%);
+}
+
+/* Conteúdo da thumb */
+.container .thumb .content {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+
+/* Setas de navegação */
+.container .arrows {
+    position: absolute;
+    top: 80%;
+    right: 52%;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Botões das setas */
+.container .arrows button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eee4;
+    border: none;
+    font-family: monospace;
+    color: #eee;
+    font-weight: bold;
+    font-size: large;
+    transition: .5s;
+}
+
+/* Hover nas setas */
+.container .arrows button:hover {
+    background-color: #eee;
+    color: #555;
+}
+
+/* Efeito de destaque no item ativo ao voltar */
+.container.back .list .list-item:nth-child(1) {
+    z-index: 1;
+}
+
+/* Animação de entrada do conteúdo do último item */
+.container .list .list-item:nth-last-child(1) .content,
+.container .list .list-item:nth-last-child(1) .content .description,
+.container .list .list-item:nth-last-child(1) .content .buttons {
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent 0.5s linear 1 forwards;
+}
+
+/* Keyframes para mostrar conteúdo */
+@keyframes showContent {
+    to {
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+/* Delays para animação em cascata */
+.container .list .list-item:nth-last-child(1) .content {
+    animation-delay: 0.2s;
+}
+.container .list .list-item:nth-last-child(1) .content .description {
+    animation-delay: 0.3s;
+}
+.container .list .list-item:nth-last-child(1) .content .buttons{
+    animation-delay: 0.4s;
+}
+
+/* Animação da imagem principal ao avançar */
+.container.next .list .list-item:nth-last-child(1) img {
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 20px;
+    animation: showMainImage 0.3s linear 1 forwards;
+}
+
+/* Keyframes para mostrar imagem principal */
+@keyframes showMainImage {
+    to {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+/* Animação da imagem principal ao voltar */
+.container.back .list .list-item:nth-child(1) img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    animation: hideMainImage 0.5s linear 1 forwards;
+    z-index: 2;
+}
+
+/* Keyframes para esconder imagem principal */
+@keyframes hideMainImage {
+    to {
+        width: 150px;
+        height: 250px;
+        border-radius: 10px;
+        left: 50%;
+        bottom: 50px;
+    }
+}
+
+/* Animação das thumbs ao avançar */
+.container.next .thumb {
+    animation: effectNextThumb 0.5s linear 1 forwards;
+}
+
+/* Keyframes para efeito nas thumbs */
+@keyframes effectNextThumb {
+    from {
+        transform: translateX(150px);
+    }
+}
+
+/* Efeito para a última thumb ao avançar */
+.container.next .thumb .thumb-item:nth-last-child(1) {
+    width: 0;
+    overflow: hidden;
+    animation: effectLastThumb .1s linear 1 forwards;
+}
+
+/* Keyframes para esconder a última thumb */
+@keyframes effectLastThumb {
+    from {
+        transform: translateX(150px);
+    }
+}
+
+/* Responsividade para telas pequenas */
+@media screen and (max-width: 678px) {
+    to{
+        width: 0;
+    }
+
+    .container .list .list-item .content {
+        padding-right: 0;
+    }
+    .container .list .list-item .content .description{
+        font-size: 30px;
+    }
+    .container .list .list-item .content .title{
+        font-size: 30px;
+    }
+}
